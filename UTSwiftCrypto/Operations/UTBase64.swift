@@ -14,21 +14,26 @@ import Foundation
  */
 
 public class UTBase64 {
-  public class func encode(string : String) -> String? {
+
+  public class func encodeData(data: NSData) -> String? {
+    let base64String = data.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+    return base64String as String
+  }
+
+  public class func encode(string: String) -> String? {
     guard let plainData = (string as NSString).dataUsingEncoding(NSUTF8StringEncoding) else {
       return nil
     }
     let base64String = plainData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
     return base64String as String
   }
-  
-  public class func decode(string : String?) -> String? {
+
+  public class func decode(string: String?) -> NSData? {
     guard let stringValue = string else {
       return nil
     }
-    if let decodedData = NSData(base64EncodedString: stringValue, options: NSDataBase64DecodingOptions(rawValue: 0)),
-      let decodedString = NSString(data: decodedData, encoding: NSUTF8StringEncoding) {
-      return decodedString as String
+    if let decodedData = NSData(base64EncodedString: stringValue, options: NSDataBase64DecodingOptions(rawValue: 0)) {
+      return decodedData
     }
     return nil
   }

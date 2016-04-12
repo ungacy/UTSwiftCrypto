@@ -1,0 +1,9 @@
+//
+//  CommonCrypto.xcconfig
+//  UTSwiftCrypto
+//
+//  Created by Tao, Ye(Ye) on 16/4/12.
+//  Copyright © 2016年 ungacy. All rights reserved.
+//
+MODULEMAP_FILE[sdk=iphoneos*] = $(SRCROOT)/CommonCrypto/iphoneos.modulemap
+MODULEMAP_FILE[sdk=iphonesimulator*] = $(SRCROOT)/CommonCrypto/iphonesimulator.modulemap
