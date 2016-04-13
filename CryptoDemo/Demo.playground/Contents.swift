@@ -14,3 +14,4 @@ let key = "keyyyyyyyyyyyyyy"
 let encrypt = try UTAES.aesEncrypt(message, key: key)
 let decrypt = try UTAES.aesDecrypt(encrypt!, key: key)
 
+UTMD5.md5("12345")
