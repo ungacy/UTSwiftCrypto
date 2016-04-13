@@ -6,7 +6,6 @@
 //  Copyright © 2016年 ungacy. All rights reserved.
 //
 
-import UIKit
 import CommonCrypto
 
 public class UTMD5 {

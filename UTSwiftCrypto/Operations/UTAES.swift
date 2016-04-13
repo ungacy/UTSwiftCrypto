@@ -6,18 +6,9 @@
 //  Copyright © 2016年 ungacy. All rights reserved.
 //
 
-import UIKit
 import CommonCrypto
 
 public class UTAES: NSObject {
-
-
-  class func SHA256Hash(data: NSData) -> NSData {
-    var hash = [UInt8](count: Int(CC_SHA256_DIGEST_LENGTH), repeatedValue: 0)
-    CC_SHA256(data.bytes, CC_LONG(data.length), &hash)
-    let result = NSData(bytes: hash, length: Int(CC_SHA256_DIGEST_LENGTH))
-    return result
-  }
 
   class func fix(key data: NSData) -> size_t {
     let length = data.length
@@ -33,7 +24,7 @@ public class UTAES: NSObject {
   public class func aesEncrypt(message: String, key: String) throws -> String? {
     let originKeyData: NSData! = (key as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
 //    encrypt with SHA256Hash of key
-    let keyData = SHA256Hash(originKeyData)
+    let keyData = UTSHA.SHA256Hash(originKeyData)
     let keyBytes         = UnsafeMutablePointer<Void>(keyData.bytes)
     let data: NSData! = (message as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
     let dataLength    = size_t(data.length)
@@ -72,7 +63,7 @@ public class UTAES: NSObject {
     let data: NSData! = UTBase64.decode(message)
     let originKeyData: NSData! = (key as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
   //    decrypt with SHA256Hash of key
-    let keyData = SHA256Hash(originKeyData)
+    let keyData = UTSHA.SHA256Hash(originKeyData)
     let keyBytes         = UnsafeMutablePointer<Void>(keyData.bytes)
     let dataLength    = size_t(data.length)
     let dataBytes     = UnsafeMutablePointer<Void>(data.bytes)

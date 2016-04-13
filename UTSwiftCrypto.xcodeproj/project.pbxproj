@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34A283F11CBE397300889E71 /* UTMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A283F01CBE397300889E71 /* UTMD5.swift */; };
+		34A283F31CBE3FE600889E71 /* UTSHA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A283F21CBE3FE600889E71 /* UTSHA.swift */; };
 		34B355F31CBCEC7F00267250 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343872821CBCEB3B00FC099F /* CommonCrypto.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		34E4FC061CBCCBF900897C66 /* UTSwiftCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 34E4FC051CBCCBF900897C66 /* UTSwiftCrypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		34E4FC141CBCCD1300897C66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E4FC131CBCCD1300897C66 /* AppDelegate.swift */; };
@@ -59,6 +60,7 @@
 		3438728A1CBCEB5A00FC099F /* CommonCrypto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CommonCrypto.xcconfig; sourceTree = "<group>"; };
 		3438728B1CBCEBB000FC099F /* iphoneos.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = iphoneos.modulemap; sourceTree = "<group>"; };
 		34A283F01CBE397300889E71 /* UTMD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTMD5.swift; sourceTree = "<group>"; };
+		34A283F21CBE3FE600889E71 /* UTSHA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTSHA.swift; sourceTree = "<group>"; };
 		34B355EF1CBCEBDA00267250 /* iphonesimulator.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = iphonesimulator.modulemap; sourceTree = "<group>"; };
 		34B355F41CBCECC400267250 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = ../../../usr/lib/system/libcommonCrypto.dylib; sourceTree = "<group>"; };
 		34E4FC021CBCCBF900897C66 /* UTSwiftCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UTSwiftCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				34E4FC261CBCCE1A00897C66 /* UTBase64.swift */,
 				34E4FC321CBCDF0D00897C66 /* UTAES.swift */,
 				34A283F01CBE397300889E71 /* UTMD5.swift */,
+				34A283F21CBE3FE600889E71 /* UTSHA.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				34A283F11CBE397300889E71 /* UTMD5.swift in Sources */,
 				34E4FC331CBCDF0D00897C66 /* UTAES.swift in Sources */,
 				34E4FC271CBCCE1A00897C66 /* UTBase64.swift in Sources */,
+				34A283F31CBE3FE600889E71 /* UTSHA.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
