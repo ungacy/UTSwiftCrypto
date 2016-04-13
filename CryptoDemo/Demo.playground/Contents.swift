@@ -11,5 +11,6 @@ if let encodedData = encodedFoo {
 let message = "message"
 let key = "keyyyyyyyyyyyyyy"
 
-let encrypt = try UTAES.aesEncrypt(message, key: key, iv: nil)
-let decrypt = try UTAES.aesDecrypt(encrypt!, key: key, iv: nil)
+let encrypt = try UTAES.aesEncrypt(message, key: key)
+let decrypt = try UTAES.aesDecrypt(encrypt!, key: key)
+

@@ -11,7 +11,18 @@ import CommonCrypto
 
 public class UTAES: NSObject {
 
-  public class func aesEncrypt(message: String, key: String, iv: String?) throws -> String? {
+  class func fix(key data: NSData) -> size_t {
+    let length = data.length
+    if length <= kCCKeySizeAES128 {
+      return kCCKeySizeAES128
+    } else if length <= kCCKeySizeAES192 {
+      return kCCKeySizeAES192
+    } else {
+      return kCCKeySizeAES256
+    }
+  }
+
+  public class func aesEncrypt(message: String, key: String) throws -> String? {
     let keyData: NSData! = (key as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
     let keyBytes         = UnsafeMutablePointer<Void>(keyData.bytes)
     let data: NSData! = (message as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
@@ -21,7 +32,7 @@ public class UTAES: NSObject {
     let cryptPointer = UnsafeMutablePointer<Void>(cryptData!.mutableBytes)
     let cryptLength  = size_t(cryptData!.length)
 
-    let keyLength              = size_t(kCCKeySizeAES128)
+    let keyLength              = fix(key: keyData)
     let operation: CCOperation = UInt32(kCCEncrypt)
     let algoritm: CCAlgorithm = UInt32(kCCAlgorithmAES128)
     let options: CCOptions   = UInt32(kCCOptionPKCS7Padding )
@@ -47,7 +58,7 @@ public class UTAES: NSObject {
     }
   }
 
-  public class func aesDecrypt(message: String, key: String, iv: String?) throws -> String? {
+  public class func aesDecrypt(message: String, key: String) throws -> String? {
     let data: NSData! = UTBase64.decode(message)
     let keyData: NSData! = (key as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
     let keyBytes         = UnsafeMutablePointer<Void>(keyData.bytes)
@@ -56,7 +67,7 @@ public class UTAES: NSObject {
     let cryptData    = NSMutableData(length: Int(dataLength) + kCCBlockSizeAES128)
     let cryptPointer = UnsafeMutablePointer<Void>(cryptData!.mutableBytes)
     let cryptLength  = size_t(cryptData!.length)
-    let keyLength              = size_t(kCCKeySizeAES128)
+    let keyLength              = fix(key: keyData)
     let operation: CCOperation = UInt32(kCCDecrypt)
     let algoritm: CCAlgorithm = UInt32(kCCAlgorithmAES128)
     let options: CCOptions   = UInt32(kCCOptionPKCS7Padding )
